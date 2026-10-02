@@ -8,6 +8,7 @@ const SeoPage = lazy(() => import('./pages/SeoPage.jsx'));
 const Contact = lazy(() => import('./pages/Contact.jsx'));
 const Legal = lazy(() => import('./pages/Legal.jsx'));
 const NotFound = lazy(() => import('./pages/NotFound.jsx'));
+const Admin = lazy(() => import('./pages/Admin.jsx'));
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="privacy-policy" element={<Legal kind="privacy" />} />
           <Route path="terms-and-conditions" element={<Legal kind="terms" />} />
+          <Route path="admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

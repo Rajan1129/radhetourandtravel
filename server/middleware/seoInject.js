@@ -30,6 +30,14 @@ const STATIC_PAGES = {
     h1: 'Terms & Conditions',
     body: 'Enquiries submitted on this website are requests for quotation. Bookings are confirmed upon mutual agreement of route, vehicle type, and fare.',
   },
+  '/admin': {
+    title: 'Admin Portal | Radhe Una Taxi Service',
+    description: 'Admin Portal Login for Radhe Una Taxi Service.',
+    keywords: '',
+    h1: 'Admin Portal',
+    body: 'Sign in to access booking enquiries and customer management.',
+    noindex: true,
+  },
 };
 
 function renderSemanticHtml(p, meta, pg, site) {
@@ -299,8 +307,8 @@ export function seoInject(distDir) {
       `<title>${esc(meta.title)}</title>`,
       `<meta data-rh="true" name="description" content="${esc(meta.description)}">`,
       meta.keywords ? `<meta data-rh="true" name="keywords" content="${esc(meta.keywords)}">` : '',
-      status === 404
-        ? '<meta data-rh="true" name="robots" content="noindex, follow">'
+      status === 404 || meta.noindex
+        ? '<meta data-rh="true" name="robots" content="noindex, nofollow">'
         : '<meta data-rh="true" name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">',
       `<link data-rh="true" rel="canonical" href="${url}">`,
       '<meta data-rh="true" property="og:type" content="website">',
