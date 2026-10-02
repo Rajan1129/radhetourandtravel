@@ -14,5 +14,8 @@ export const BUSINESS = {
     country: 'IN',
   },
   rating: { value: '5.0', count: 16 },
+  cid: '2210941749755353077',
+  kgmid: '/g/11zg3ql231',
+  mapsUrl: 'https://www.google.com/maps?cid=2210941749755353077',
 };
 export const addressLines = ['R. H. Hospital, Railway Station Road,', 'Adarsh Nagar, Una,', 'Himachal Pradesh 174303'];

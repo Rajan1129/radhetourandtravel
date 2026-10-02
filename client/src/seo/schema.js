@@ -15,7 +15,12 @@ export const localBusinessSchema = (site) => ({
   priceRange: '₹₹',
   currenciesAccepted: 'INR',
   paymentAccepted: 'Cash, UPI, Net Banking, Credit Card, Debit Card',
-  hasMap: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Radhe Tour & Travel Taxi Service Una, Railway Station Road, Adarsh Nagar, Una, Himachal Pradesh 174303')}`,
+  hasMap: BUSINESS.mapsUrl,
+  sameAs: [
+    BUSINESS.mapsUrl,
+    'https://www.google.com/search?kgmid=/g/11zg3ql231',
+    'https://www.google.com/search?q=radhe+una+taxi+service&ludocid=2210941749755353077',
+  ],
   geo: {
     '@type': 'GeoCoordinates',
     latitude: 31.4685,
