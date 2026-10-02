@@ -1,0 +1,26 @@
+﻿{
+  "name": "Radhe Una Taxi Service",
+  "short_name": "Radhe Taxi",
+  "description": "Reliable 24/7 taxi service in Una, Himachal Pradesh. Local, outstation, airport transfers and railway pickups.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#082B49",
+  "icons": [
+    {
+      "src": "/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
