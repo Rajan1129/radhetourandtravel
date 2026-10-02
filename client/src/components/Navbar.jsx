@@ -38,7 +38,18 @@ export default function Navbar() {
       {open && (
         <nav id="mobile-menu" aria-label="Mobile" className="lg:hidden border-t border-slate-200 bg-white">
           <ul className="wrap py-2">
-            {links.map(([t, to]) => <li key={t} className="border-b border-slate-100"><Link to={to} className="block py-3.5 font-semibold">{t}</Link></li>)}
+            {links.map(([t, to]) => (
+              <li key={t} className="border-b border-slate-100">
+                <Link to={to} onClick={() => setOpen(false)} className="block py-3.5 font-semibold text-slate-dark hover:text-deep">
+                  {t}
+                </Link>
+              </li>
+            ))}
+            <li className="py-3">
+              <a href="/#book" onClick={() => setOpen(false)} className="btn btn-primary w-full text-center">
+                Book a Taxi
+              </a>
+            </li>
           </ul>
         </nav>
       )}
