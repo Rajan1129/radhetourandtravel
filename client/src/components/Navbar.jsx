@@ -5,8 +5,13 @@ import logo from '../assets/images/logo/logo.webp';
 import { telHref } from '../utils/contact.js';
 
 const links = [
-  ['Home', '/'], ['Taxi Services', '/taxi-service-in-una'], ['Outstation', '/outstation-taxi-una'],
-  ['Airport Transfer', '/airport-taxi-una'], ['Popular Routes', '/#routes'], ['About', '/#about'], ['Contact', '/#contact'],
+  ['Home', '/'],
+  ['Taxi Services', '/taxi-service-in-una'],
+  ['Outstation', '/outstation-taxi-una'],
+  ['Airport Transfer', '/airport-taxi-una'],
+  ['Popular Routes', '/#routes'],
+  ['About Us', '/about'],
+  ['Contact', '/contact'],
 ];
 export default function Navbar() {
   const [open, setOpen] = useState(false);

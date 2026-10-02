@@ -9,7 +9,7 @@ const quick = [
   ['Gagret Taxi', '/taxi-service-in-gagret'],
   ['Haroli & Tahliwal', '/taxi-service-in-haroli'],
   ['Mehatpur Taxi', '/taxi-service-mehatpur'],
-  ['About Us', '/#about'],
+  ['About Us', '/about'],
   ['Contact', '/contact'],
 ];
 

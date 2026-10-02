@@ -12,6 +12,7 @@ const urls = [
     changefreq: 'weekly',
     title: p.title,
   })),
+  { path: '/about', priority: '0.8', changefreq: 'monthly', title: 'About Radhe Una Taxi Service' },
   { path: '/contact', priority: '0.7', changefreq: 'monthly', title: 'Contact Radhe Una Taxi Service' },
   { path: '/privacy-policy', priority: '0.3', changefreq: 'yearly', title: 'Privacy Policy' },
   { path: '/terms-and-conditions', priority: '0.3', changefreq: 'yearly', title: 'Terms & Conditions' },

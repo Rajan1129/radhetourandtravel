@@ -6,6 +6,7 @@ import { localBusinessSchema, webSiteSchema, faqSchema } from '../seo/schema.js'
 import Hero from '../components/Hero.jsx';
 import QuickBooking from '../components/QuickBooking.jsx';
 import ServiceSection from '../components/ServiceSection.jsx';
+import FleetSection from '../components/FleetSection.jsx';
 import RouteSection from '../components/RouteSection.jsx';
 import WhyChooseUs from '../components/WhyChooseUs.jsx';
 import TravelSection from '../components/TravelSection.jsx';
@@ -23,6 +24,7 @@ export default function Home() {
       <Hero />
       <QuickBooking />
       <ServiceSection />
+      <FleetSection />
       <RouteSection />
       <WhyChooseUs />
       <TravelSection />

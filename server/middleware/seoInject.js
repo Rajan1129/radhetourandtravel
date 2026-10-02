@@ -9,6 +9,13 @@ import { localBusinessSchema, webSiteSchema, taxiServiceSchema, breadcrumbSchema
 const esc = (s) => String(s || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 const STATIC_PAGES = {
+  '/about': {
+    title: 'About Us | Radhe Tour & Travel Taxi Service Una, Himachal Pradesh',
+    description: 'Learn about Radhe Una Taxi Service. Based on Railway Station Road, Adarsh Nagar, Una, HP. 5.0 rated on Google with experienced hill drivers and clean commercial cabs.',
+    keywords: 'about Radhe Una Taxi Service, Radhe tour and travels Una, taxi owner Una, best taxi service in Una Himachal',
+    h1: 'About Radhe Tour & Travel Taxi Service Una',
+    body: 'Your trusted local travel partner in Una, Himachal Pradesh. Driven by safety, cleanliness, punctual pickups, and true mountain hospitality with a well-maintained commercial fleet.',
+  },
   '/contact': {
     title: 'Contact Radhe Una Taxi Service | Una, Himachal Pradesh',
     description: 'Call or WhatsApp Radhe Una Taxi Service on +91 62304 68560 or visit us at Railway Station Road, Adarsh Nagar, Una, Himachal Pradesh 174303.',
@@ -51,6 +58,7 @@ function renderSemanticHtml(p, meta, pg, site) {
         <a href="/" style="color:#fff;text-decoration:none;font-size:1.25rem;font-weight:bold;">${esc(BUSINESS.brand)}</a>
         <nav aria-label="Quick Links" style="display:flex;gap:1rem;flex-wrap:wrap;">
           <a href="/" style="color:#fff;text-decoration:none;">Home</a>
+          <a href="/about" style="color:#fff;text-decoration:none;">About Us</a>
           <a href="/taxi-service-in-una" style="color:#fff;text-decoration:none;">Local Taxi</a>
           <a href="/outstation-taxi-una" style="color:#fff;text-decoration:none;">Outstation</a>
           <a href="/airport-taxi-una" style="color:#fff;text-decoration:none;">Airport Taxi</a>

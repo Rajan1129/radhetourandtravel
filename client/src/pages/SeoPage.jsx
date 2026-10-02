@@ -12,6 +12,7 @@ import FAQSection from '../components/FAQSection.jsx';
 import ContactCTA from '../components/ContactCTA.jsx';
 import MountainScene from '../components/MountainScene.jsx';
 import Photo from '../components/Photo.jsx';
+import FleetSection from '../components/FleetSection.jsx';
 
 export default function SeoPage({ slug: fixed }) {
   const { slug: param } = useParams();
@@ -52,6 +53,8 @@ export default function SeoPage({ slug: fixed }) {
           <p className="mt-5 text-sm text-slate-dark">Fares are confirmed on enquiry; we do not show fixed online prices.</p>
         </aside>
       </div>
+
+      <FleetSection />
 
       <QuickBooking />
       <FAQSection faqs={page.faqs} />

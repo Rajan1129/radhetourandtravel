@@ -244,6 +244,17 @@
     </image:image>
   </url>
   <url>
+    <loc>https://your-domain.com/about</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://your-domain.com/og-image.jpg</image:loc>
+      <image:title>About Radhe Una Taxi Service</image:title>
+      <image:caption>Radhe Una Taxi Service Una Himachal Pradesh</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://your-domain.com/contact</loc>
     <lastmod>2026-10-02</lastmod>
     <changefreq>monthly</changefreq>
