@@ -1,8 +1,6 @@
-import { Package } from '../models/Package.js';
-import { Car } from '../models/Car.js';
-
-export const initialPackages = [
+export const defaultPackages = [
   {
+    _id: 'pkg-1',
     title: 'Shimla Hill Station Tour Package',
     slug: 'shimla-tour-package',
     category: 'Hill Station Tour',
@@ -31,6 +29,7 @@ export const initialPackages = [
     order: 1,
   },
   {
+    _id: 'pkg-2',
     title: 'Manali & Solang Valley Holiday Package',
     slug: 'manali-tour-package',
     category: 'Hill Station Tour',
@@ -59,6 +58,7 @@ export const initialPackages = [
     order: 2,
   },
   {
+    _id: 'pkg-3',
     title: 'Kasol & Manikaran Parvati Valley Package',
     slug: 'kasol-tour-package',
     category: 'Adventure & Trekking',
@@ -86,6 +86,7 @@ export const initialPackages = [
     order: 3,
   },
   {
+    _id: 'pkg-4',
     title: 'Mata Chintpurni Devi Temple Darshan Package',
     slug: 'chintpurni-temple-package',
     category: 'Pilgrimage Yatra',
@@ -114,6 +115,7 @@ export const initialPackages = [
     order: 4,
   },
   {
+    _id: 'pkg-5',
     title: 'Mata Jwala Ji Temple Pilgrimage Package',
     slug: 'jwalaji-temple-package',
     category: 'Pilgrimage Yatra',
@@ -139,6 +141,7 @@ export const initialPackages = [
     order: 5,
   },
   {
+    _id: 'pkg-6',
     title: 'Kangra Valley & Fort Heritage Package',
     slug: 'kangra-tour-package',
     category: 'Temple Special',
@@ -164,6 +167,7 @@ export const initialPackages = [
     order: 6,
   },
   {
+    _id: 'pkg-7',
     title: 'Dharamshala & McLeodganj Sightseeing Package',
     slug: 'dharamshala-tour-package',
     category: 'Hill Station Tour',
@@ -187,6 +191,7 @@ export const initialPackages = [
     order: 7,
   },
   {
+    _id: 'pkg-8',
     title: 'Mata Naina Devi Ji Temple Package',
     slug: 'naina-devi-package',
     category: 'Pilgrimage Yatra',
@@ -212,6 +217,7 @@ export const initialPackages = [
     order: 8,
   },
   {
+    _id: 'pkg-9',
     title: 'Mata Baglamukhi Bankhandi Temple Package',
     slug: 'baglamukhi-temple-package',
     category: 'Temple Special',
@@ -236,6 +242,7 @@ export const initialPackages = [
     order: 9,
   },
   {
+    _id: 'pkg-10',
     title: 'Himachal 2 Dham Yatra Package (Chintpurni + Jwalaji)',
     slug: '2-dham-yatra-package',
     category: 'Pilgrimage Yatra',
@@ -266,6 +273,7 @@ export const initialPackages = [
     order: 10,
   },
   {
+    _id: 'pkg-11',
     title: 'Himachal 4 Dham / 5 Devi Comprehensive Yatra Package',
     slug: '4-dham-5-devi-yatra-package',
     category: 'Pilgrimage Yatra',
@@ -293,91 +301,3 @@ export const initialPackages = [
     order: 11,
   },
 ];
-
-export const initialCars = [
-  {
-    name: 'Sedan (Maruti Dzire / Etios)',
-    category: 'Sedan',
-    tag: 'Budget & Business',
-    passengers: 'Up to 4 Passengers',
-    luggage: '2 Large + 2 Small Bags',
-    ideal: 'Local city rides, station transfers, Chandigarh hospital & airport drops',
-    features: [
-      'Fully Air-Conditioned',
-      'Comfortable Legroom',
-      'Clean & Sanitized Daily',
-      'Music System & Mobile Charger',
-    ],
-    startingPrice: '₹11/km',
-    image: '/assets/fleet/sedan_dzire.jpg',
-    order: 1,
-  },
-  {
-    name: 'SUV (Toyota Innova Crysta)',
-    category: 'SUV',
-    tag: 'Family & Hill Tours',
-    passengers: '6 to 7 Passengers',
-    luggage: 'Roof Carrier + Spacious Boot',
-    ideal: 'Dharamshala, Shimla, Manali tours, family trips, heavy luggage',
-    features: [
-      'Powerful Dual AC',
-      'Smooth Hill Suspension',
-      'Ample Luggage Carrier',
-      'Reclining Captain Seats',
-    ],
-    startingPrice: '₹16/km',
-    image: '/assets/fleet/innova_suv.jpg',
-    order: 2,
-  },
-  {
-    name: 'Tempo Traveller (12-17 Seater)',
-    category: 'Tempo Traveller',
-    tag: 'Group & Pilgrimage',
-    passengers: '12 to 17 Passengers',
-    luggage: 'High-Capacity Roof Carrier',
-    ideal: 'Chintpurni, Jwalaji Devi yatra, weddings, school/college groups',
-    features: [
-      'Push-back Reclining Seats',
-      'High Roof Airy Cabin',
-      'Ample Legroom',
-      'Experienced Hill Driver',
-    ],
-    startingPrice: '₹24/km',
-    image: '/assets/fleet/tempo_traveller.jpg',
-    order: 3,
-  },
-];
-
-export async function seedDefaultsIfEmpty() {
-  try {
-    for (const pkg of initialPackages) {
-      await Package.updateOne({ slug: pkg.slug }, { $setOnInsert: pkg }, { upsert: true });
-    }
-    // Clean up any exact duplicate packages with non-unique IDs if any were inserted
-    const all = await Package.find().sort({ createdAt: 1 });
-    const seenSlugs = new Set();
-    for (const item of all) {
-      if (seenSlugs.has(item.slug)) {
-        await Package.findByIdAndDelete(item._id);
-      } else {
-        seenSlugs.add(item.slug);
-      }
-    }
-
-    for (const car of initialCars) {
-      await Car.updateOne({ name: car.name }, { $setOnInsert: car }, { upsert: true });
-    }
-    const allCars = await Car.find().sort({ createdAt: 1 });
-    const seenCars = new Set();
-    for (const item of allCars) {
-      if (seenCars.has(item.name)) {
-        await Car.findByIdAndDelete(item._id);
-      } else {
-        seenCars.add(item.name);
-      }
-    }
-    console.log('Package & Car collections verified and synchronized.');
-  } catch (err) {
-    console.error('Error seeding initial data:', err.message);
-  }
-}

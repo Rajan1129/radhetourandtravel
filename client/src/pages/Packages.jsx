@@ -5,7 +5,8 @@ import PackageCard from '../components/PackageCard.jsx';
 import ContactCTA from '../components/ContactCTA.jsx';
 import QuickBooking from '../components/QuickBooking.jsx';
 import { getPackages } from '../utils/api.js';
-import { Loader2, Sparkles, Compass, ShieldCheck } from 'lucide-react';
+import { defaultPackages } from '../data/packagesData.js';
+import { Sparkles, Compass } from 'lucide-react';
 
 const CATEGORIES = [
   'All Packages',
@@ -16,31 +17,43 @@ const CATEGORIES = [
 ];
 
 export default function Packages() {
-  const [packages, setPackages] = useState([]);
+  // Initialize with complete default packages so they appear immediately without delay
+  const [packages, setPackages] = useState(defaultPackages);
   const [selectedCat, setSelectedCat] = useState('All Packages');
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchPackages();
-  }, []);
-
-  async function fetchPackages() {
-    setLoading(true);
-    try {
-      const res = await getPackages();
-      if (res && res.items && res.items.length > 0) {
-        setPackages(res.items);
+    async function loadApiPackages() {
+      try {
+        const res = await getPackages();
+        if (res && res.items && res.items.length > 0) {
+          // Merge API packages with fallback default image if API package lacks image
+          const formatted = res.items.map((item) => {
+            if (!item.image) {
+              const matched = defaultPackages.find((d) => d.slug === item.slug);
+              return matched ? { ...item, image: matched.image } : item;
+            }
+            return item;
+          });
+          setPackages(formatted);
+        }
+      } catch (err) {
+        // Fallback to defaultPackages already set
       }
-    } catch (err) {
-      console.error('Could not load packages from API:', err);
-    } finally {
-      setLoading(false);
     }
-  }
+    loadApiPackages();
+  }, []);
 
   const filtered = selectedCat === 'All Packages'
     ? packages
-    : packages.filter((p) => p.category === selectedCat || p.category?.toLowerCase().includes(selectedCat.toLowerCase()));
+    : packages.filter((p) => {
+        const cat = (p.category || '').toLowerCase();
+        const sel = selectedCat.toLowerCase();
+        if (sel.includes('pilgrimage') && cat.includes('pilgrimage')) return true;
+        if (sel.includes('hill') && cat.includes('hill')) return true;
+        if (sel.includes('temple') && cat.includes('temple')) return true;
+        if (sel.includes('adventure') && (cat.includes('adventure') || cat.includes('trekking'))) return true;
+        return cat.includes(sel);
+      });
 
   const breadcrumbs = [
     { name: 'Home', path: '/' },
@@ -104,12 +117,7 @@ export default function Packages() {
           </div>
         </div>
 
-        {loading ? (
-          <div className="min-h-[40vh] flex flex-col items-center justify-center text-slate-500">
-            <Loader2 className="w-10 h-10 animate-spin text-sky mb-3" />
-            <p className="font-semibold text-sm">Loading curated tour packages...</p>
-          </div>
-        ) : filtered.length === 0 ? (
+        {filtered.length === 0 ? (
           <div className="min-h-[30vh] flex flex-col items-center justify-center text-center p-8 bg-white border border-slate-200 rounded-lg">
             <p className="text-lg font-bold text-navy">No packages found in this category</p>
             <p className="text-sm text-slate-500 mt-1">Try selecting "All Packages" or contact us directly for custom itineraries.</p>
