@@ -3,9 +3,9 @@ import { telHref, waLink } from '../utils/contact.js';
 
 export default function PackageCard({ pkg }) {
   const waMessage = `Hello Radhe Una Taxi Service, I am interested in booking the "${pkg.title}" (${pkg.duration}). Please share fare and cab availability.`;
-  const defaultImg = pkg.category.includes('Pilgrimage') || pkg.category.includes('Temple')
-    ? '/assets/pilgrimage.jpg'
-    : '/assets/himachal.jpg';
+  const defaultImg = (pkg.category || '').toLowerCase().includes('pilgrimage') || (pkg.category || '').toLowerCase().includes('temple')
+    ? '/packages/chintpurni.jpg'
+    : '/packages/shimla.jpg';
 
   const imgSrc = pkg.image || defaultImg;
 
