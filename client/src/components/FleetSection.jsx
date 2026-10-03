@@ -1,8 +1,10 @@
-﻿import { Check, Phone, ArrowUpRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Check, Phone, ArrowUpRight } from 'lucide-react';
 import Photo from './Photo.jsx';
 import { telHref } from '../utils/contact.js';
+import { getCars } from '../utils/api.js';
 
-const cabs = [
+const defaultCabs = [
   {
     name: 'Sedan (Dzire / Etios)',
     tag: 'Budget & Business',
@@ -33,6 +35,22 @@ const cabs = [
 ];
 
 export default function FleetSection() {
+  const [cabs, setCabs] = useState(defaultCabs);
+
+  useEffect(() => {
+    async function loadCars() {
+      try {
+        const res = await getCars();
+        if (res && res.items && res.items.length > 0) {
+          setCabs(res.items);
+        }
+      } catch (e) {
+        // Fallback to defaultCabs
+      }
+    }
+    loadCars();
+  }, []);
+
   return (
     <section id="fleet" aria-labelledby="fleet-h" className="py-16 md:py-24 bg-mist scroll-mt-20">
       <div className="wrap">
@@ -54,21 +72,35 @@ export default function FleetSection() {
         <div className="mt-12 grid gap-8 md:grid-cols-3">
           {cabs.map((c) => (
             <div
-              key={c.name}
+              key={c._id || c.name}
               className="border border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between"
             >
               <div>
                 <div className="relative">
-                  <Photo
-                    name={c.photo}
-                    alt={c.name}
-                    className="h-60 w-full object-cover"
-                    width="600"
-                    height="450"
-                  />
-                  <span className="absolute top-3 right-3 bg-navy/90 text-sun text-xs font-extrabold px-2.5 py-1 rounded">
-                    {c.tag}
-                  </span>
+                  {c.image ? (
+                    <img
+                      src={c.image}
+                      alt={c.name}
+                      className="h-60 w-full object-cover"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/og-image.jpg';
+                      }}
+                    />
+                  ) : (
+                    <Photo
+                      name={c.photo || 'fleet/sedan_dzire'}
+                      alt={c.name}
+                      className="h-60 w-full object-cover"
+                      width="600"
+                      height="450"
+                    />
+                  )}
+                  {c.tag && (
+                    <span className="absolute top-3 right-3 bg-navy/90 text-sun text-xs font-extrabold px-2.5 py-1 rounded">
+                      {c.tag}
+                    </span>
+                  )}
                 </div>
 
                 <div className="p-6">
@@ -80,17 +112,19 @@ export default function FleetSection() {
                     <b>Best for:</b> {c.ideal}
                   </p>
 
-                  <div className="mt-5 border-t border-slate-100 pt-4">
-                    <p className="text-xs font-bold uppercase tracking-wider text-slate-dark mb-2">Key Features:</p>
-                    <ul className="space-y-1.5 text-xs text-slate-dark">
-                      {c.features.map((feat) => (
-                        <li key={feat} className="flex items-center gap-2">
-                          <Check size={14} className="text-emerald-600 shrink-0" />
-                          <span>{feat}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  {c.features && c.features.length > 0 && (
+                    <div className="mt-5 border-t border-slate-100 pt-4">
+                      <p className="text-xs font-bold uppercase tracking-wider text-slate-dark mb-2">Key Features:</p>
+                      <ul className="space-y-1.5 text-xs text-slate-dark">
+                        {c.features.map((feat) => (
+                          <li key={feat} className="flex items-center gap-2">
+                            <Check size={14} className="text-emerald-600 shrink-0" />
+                            <span>{feat}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               </div>
 

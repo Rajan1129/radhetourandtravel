@@ -1,4 +1,4 @@
-﻿# Dependencies
+# Dependencies
 node_modules/
 */node_modules/
 
@@ -17,7 +17,9 @@ client/dist/
 npm-debug.log*
 
 # Editor / OS files
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
+# Uploads
+server/uploads/*
+!server/uploads/.gitkeep
+!server/uploads/packages/.gitkeep
+!server/uploads/cars/.gitkeep
+

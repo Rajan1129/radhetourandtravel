@@ -9,6 +9,13 @@ import { localBusinessSchema, webSiteSchema, taxiServiceSchema, breadcrumbSchema
 const esc = (s) => String(s || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 const STATIC_PAGES = {
+  '/packages': {
+    title: 'Himachal Tour Packages & Devi Yatra from Una | Radhe Taxi Service',
+    description: 'Book tour packages from Una: Shimla, Manali, Kasol, Dharamshala, Chintpurni, Jwalaji, Naina Devi, Baglamukhi, 2 Dham & 4 Dham Devi Darshan. Clean commercial cabs & hill drivers.',
+    keywords: 'himachal tour packages from una, devi yatra una, chintpurni jwalaji 2 dham taxi package, shimla manali taxi package una, 4 dham himachal cab',
+    h1: 'Tour Packages & Pilgrimage Yatra from Una',
+    body: 'Explore Himachal Pradesh with customized holiday and pilgrimage taxi packages from Una. From famous Shaktipeeth Devi darshans (Chintpurni, Jwalaji, Naina Devi, Kangra, Baglamukhi) to scenic hill stations (Shimla, Manali, Kasol, Dharamshala), we provide verified AC cabs and experienced hill drivers.',
+  },
   '/about': {
     title: 'About Us | Radhe Tour & Travel Taxi Service Una, Himachal Pradesh',
     description: 'Learn about Radhe Una Taxi Service. Based on Railway Station Road, Adarsh Nagar, Una, HP. 5.0 rated on Google with experienced hill drivers and clean commercial cabs.',
@@ -58,11 +65,11 @@ function renderSemanticHtml(p, meta, pg, site) {
         <a href="/" style="color:#fff;text-decoration:none;font-size:1.25rem;font-weight:bold;">${esc(BUSINESS.brand)}</a>
         <nav aria-label="Quick Links" style="display:flex;gap:1rem;flex-wrap:wrap;">
           <a href="/" style="color:#fff;text-decoration:none;">Home</a>
-          <a href="/about" style="color:#fff;text-decoration:none;">About Us</a>
+          <a href="/packages" style="color:#fff;text-decoration:none;">Packages</a>
           <a href="/taxi-service-in-una" style="color:#fff;text-decoration:none;">Local Taxi</a>
-          <a href="/outstation-taxi-una" style="color:#fff;text-decoration:none;">Outstation</a>
           <a href="/airport-taxi-una" style="color:#fff;text-decoration:none;">Airport Taxi</a>
           <a href="/railway-station-taxi-una" style="color:#fff;text-decoration:none;">Railway Station</a>
+          <a href="/about" style="color:#fff;text-decoration:none;">About Us</a>
           <a href="/contact" style="color:#fff;text-decoration:none;">Contact</a>
           <a href="${tel}" style="color:#F9B824;font-weight:bold;text-decoration:none;">Call: ${esc(phone)}</a>
         </nav>

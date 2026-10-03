@@ -1,0 +1,372 @@
+import { Package } from '../models/Package.js';
+import { Car } from '../models/Car.js';
+
+export const initialPackages = [
+  {
+    title: 'Shimla Hill Station Tour Package',
+    slug: 'shimla-tour-package',
+    category: 'Hill Station Tour',
+    duration: '2 Days / 1 Night',
+    startingPrice: '₹4,999',
+    pickupLocation: 'Una Railway Station / Una Town',
+    description: 'Explore Queen of the Hills with our comfortable private cab from Una. Visit Mall Road, Ridge, Christ Church, Kufri snow viewpoint, and Jakhoo Temple with experienced hill drivers.',
+    highlights: [
+      'Scenic hill drive via Bilaspur & Solan highway',
+      'Shimla Mall Road & historic Ridge walking tour',
+      'Kufri adventure park & scenic Himalayan panorama',
+      'Jakhoo Hanuman Temple cable car & darshan',
+    ],
+    itinerary: [
+      'Day 1: Pickup from Una railway station, scenic hill drive to Shimla, hotel check-in, evening stroll on Mall Road & Lakkar Bazaar.',
+      'Day 2: Morning excursion to Kufri & Green Valley, visit Jakhoo Temple, return drive to Una with drop at station/hotel.',
+    ],
+    inclusions: [
+      'Dedicated AC Sedan / SUV with hill-expert driver',
+      'All toll taxes, state road taxes & parking fees',
+      'Pickup & drop anywhere in Una district',
+      'Flexible stops for photography and meals',
+    ],
+    featured: true,
+    order: 1,
+  },
+  {
+    title: 'Manali & Solang Valley Holiday Package',
+    slug: 'manali-tour-package',
+    category: 'Hill Station Tour',
+    duration: '3 Days / 2 Nights',
+    startingPrice: '₹7,999',
+    pickupLocation: 'Una Railway Station / Una Town',
+    description: 'Breathtaking mountain vacation covering Manali, Solang Valley adventure sports, Hadimba Temple, Vashisht hot springs, and Atal Tunnel gateway to Lahaul.',
+    highlights: [
+      'Solang Valley paragliding, zorbing & snow points',
+      'Hadimba Devi historic wooden temple in cedar forest',
+      'Atal Tunnel North Portal excursion (subject to permit)',
+      'Mall Road shopping and Old Manali cafe culture',
+    ],
+    itinerary: [
+      'Day 1: Una to Manali via Mandi & Kullu valley along the Beas river. Evening arrival and hotel check-in.',
+      'Day 2: Full day Solang Valley & Atal Tunnel excursion, followed by Hadimba Temple and Vashisht Kund.',
+      'Day 3: Kullu Shawl factory visit, Naggar Castle detour, and smooth return drive to Una.',
+    ],
+    inclusions: [
+      'Private commercial cab with mountain heating/AC',
+      'Driver allowances, toll taxes and hill permits',
+      'Full local sightseeing as per custom itinerary',
+    ],
+    featured: true,
+    order: 2,
+  },
+  {
+    title: 'Kasol & Manikaran Parvati Valley Package',
+    slug: 'kasol-tour-package',
+    category: 'Adventure & Trekking',
+    duration: '2 Days / 1 Night',
+    startingPrice: '₹5,999',
+    pickupLocation: 'Una Railway Station / Una Town',
+    description: 'Escape to magical Parvati Valley. Relax by the roaring Parvati river in Kasol, soak in the therapeutic hot sulphur springs of Gurudwara Manikaran Sahib, and sample Israeli delicacies.',
+    highlights: [
+      'Manikaran Sahib Gurudwara & sacred natural hot springs',
+      'Kasol riverside cafes and flea market',
+      'Chalal suspension bridge nature walk',
+      'Picturesque pine forests of Parvati valley',
+    ],
+    itinerary: [
+      'Day 1: Early morning departure from Una, drive along Beas and Parvati rivers to Kasol. Check-in, riverside leisure, and cafe hopping.',
+      'Day 2: Visit Gurudwara Manikaran Sahib, hot springs langar, Chalal nature trail, return journey to Una.',
+    ],
+    inclusions: [
+      'Comfortable private cab throughout the trip',
+      'All toll taxes, state permits & parking',
+      'Doorstep pickup and drop in Una',
+    ],
+    featured: true,
+    order: 3,
+  },
+  {
+    title: 'Mata Chintpurni Devi Temple Darshan Package',
+    slug: 'chintpurni-temple-package',
+    category: 'Pilgrimage Yatra',
+    duration: 'Same Day Return (4-5 Hours)',
+    startingPrice: '₹1,499',
+    pickupLocation: 'Una Railway Station / Adarsh Nagar / Una Hotels',
+    description: 'Hassle-free VIP sacred darshan of Maa Chintpurni (Chhinnamastika Dham). Just 55 km from Una, our drivers assist with convenient drop near the temple path.',
+    highlights: [
+      'Direct pickup from Vande Bharat / Express trains at Una',
+      'Smooth 1 hour 15 min drive on Bharwain hill highway',
+      'Ample waiting time for darshan, prasad & havan',
+      'Return drop to Una railway station or onward connection',
+    ],
+    itinerary: [
+      'Pickup from Una railway station or home.',
+      'Scenic drive via Amb & Bharwain ghats to Chintpurni Dham.',
+      '2 to 3 hours waiting for darshan and prasad.',
+      'Comfortable return journey to Una.',
+    ],
+    inclusions: [
+      'Sanitized AC cab with verified local driver',
+      'Fuel, toll taxes & waiting charges included',
+    ],
+    featured: true,
+    order: 4,
+  },
+  {
+    title: 'Mata Jwala Ji Temple Pilgrimage Package',
+    slug: 'jwalaji-temple-package',
+    category: 'Pilgrimage Yatra',
+    duration: 'Same Day Return (6-7 Hours)',
+    startingPrice: '₹2,499',
+    pickupLocation: 'Una Railway Station / Una Town',
+    description: 'Sacred pilgrimage to the eternal flame shrine of Mata Jwala Ji in Kangra valley. Witness the miraculous natural flames burning continuously without any fuel.',
+    highlights: [
+      'Visit holy Shaktipeeth of eternal flames (Jwala Ji)',
+      'Optional stop at Gorakh Dibbi & Nagardham',
+      'Panoramic hill vistas across Kangra foothills',
+      'Zero waiting surcharges during temple darshan',
+    ],
+    itinerary: [
+      'Morning pickup from Una railway station/hotel.',
+      'Drive via Dehra Gopipur & Beas river bridge to Jwalaji (approx. 2.5 hrs).',
+      'Assisted drop near temple complex for darshan.',
+      'Return drive with optional stop for authentic Kangri dham lunch.',
+    ],
+    inclusions: ['Clean private vehicle', 'All taxes, parking & fuel charges'],
+    featured: true,
+    order: 5,
+  },
+  {
+    title: 'Kangra Valley & Fort Heritage Package',
+    slug: 'kangra-tour-package',
+    category: 'Temple Special',
+    duration: 'Same Day / 1 Day',
+    startingPrice: '₹2,999',
+    pickupLocation: 'Una Railway Station / Una Town',
+    description: 'Rich heritage & spiritual circuit exploring historic Kangra Fort, sacred Mata Brajeshwari Devi Temple (Kangra Mandir), and lush tea gardens.',
+    highlights: [
+      'Historic 1000-year-old Kangra Fort & museum',
+      'Shaktipeeth Mata Brajeshwari Devi sacred darshan',
+      'Panoramic view of Banganga river valley',
+      'Kangra miniature art and local souvenir markets',
+    ],
+    itinerary: [
+      'Morning pickup from Una, drive via Ranital to Kangra town.',
+      'Visit Kangra Fort and royal museum.',
+      'Afternoon darshan at Brajeshwari Devi Temple.',
+      'Evening return drive to Una.',
+    ],
+    inclusions: ['Dedicated cab for the whole day', 'Driver allowance and all parking/tolls'],
+    featured: false,
+    order: 6,
+  },
+  {
+    title: 'Dharamshala & McLeodganj Sightseeing Package',
+    slug: 'dharamshala-tour-package',
+    category: 'Hill Station Tour',
+    duration: '2 Days / 1 Night',
+    startingPrice: '₹4,499',
+    pickupLocation: 'Una Railway Station / Una Town',
+    description: 'Discover Tibetan heritage and Dhauladhar mountain majesty. Visit Dalai Lama Temple Complex, Bhagsu Nag waterfall, world-famous HPCA Cricket Stadium, and serene pine trails.',
+    highlights: [
+      'Tsuglagkhang Complex & Dalai Lama Monastery',
+      'Picturesque HPCA International Cricket Stadium',
+      'Bhagsu Nag Waterfall & historic Shiva temple',
+      'St. John in the Wilderness church in deodar forest',
+    ],
+    itinerary: [
+      'Day 1: Pickup from Una, drive to Dharamshala via Kangra. Visit HPCA Stadium, ascend to McLeodganj, visit Dalai Lama Temple and local markets.',
+      'Day 2: Morning visit to Bhagsu waterfall, Church in Wilderness, and scenic tea gardens, followed by return drive to Una.',
+    ],
+    inclusions: ['AC Sedan / SUV cab', 'All parking, tolls & driver food/stay charges'],
+    featured: true,
+    order: 7,
+  },
+  {
+    title: 'Mata Naina Devi Ji Temple Package',
+    slug: 'naina-devi-package',
+    category: 'Pilgrimage Yatra',
+    duration: 'Same Day Return (5 Hours)',
+    startingPrice: '₹1,999',
+    pickupLocation: 'Una Railway Station / Una Town',
+    description: 'Perched atop a triangular hill overlooking Gobind Sagar Lake, Mata Naina Devi is one of the most revered 51 Shaktipeeths. Includes optional ropeway cable car transit.',
+    highlights: [
+      'Breathtaking views of Gobind Sagar Lake & Bhakra Dam',
+      'Convenient drop near the cable car ropeway terminal',
+      'Optional en-route stop at Anandpur Sahib Gurudwara',
+      'Peaceful hill journey with experienced hill driver',
+    ],
+    itinerary: [
+      'Pickup from Una, drive through scenic Nangal & Anandpur route.',
+      'Reach Naina Devi hill base, take ropeway or steps to main temple.',
+      'Darshan, prayers and scenic lake photography.',
+      'Smooth return journey to Una.',
+    ],
+    inclusions: ['Door-to-door private cab', 'Tolls, parking and driver fees'],
+    featured: false,
+    order: 8,
+  },
+  {
+    title: 'Mata Baglamukhi Bankhandi Temple Package',
+    slug: 'baglamukhi-temple-package',
+    category: 'Temple Special',
+    duration: 'Same Day Return (5 Hours)',
+    startingPrice: '₹2,199',
+    pickupLocation: 'Una Railway Station / Una Town',
+    description: 'Devotees visit Mata Baglamukhi (Bankhandi) for victory, protection, and fulfilling urgent vows through special yellow-clad havan and pujas.',
+    highlights: [
+      'Sacred yellow attire darshan of Pitambara Maa Baglamukhi',
+      'Special havan kund arrangement time',
+      'Convenient 1.5 hr drive from Una railway station',
+      'Can be combined with Chintpurni or Jwalaji darshan',
+    ],
+    itinerary: [
+      'Pickup from Una, direct highway drive to Bankhandi.',
+      'Temple arrival, participate in special havan/puja rituals.',
+      'Prasad collection and comfortable return drive to Una.',
+    ],
+    inclusions: ['Private sanitized cab', 'All tolls, taxes and waiting time included'],
+    featured: false,
+    order: 9,
+  },
+  {
+    title: 'Himachal 2 Dham Yatra Package (Chintpurni + Jwalaji)',
+    slug: '2-dham-yatra-package',
+    category: 'Pilgrimage Yatra',
+    duration: '1 Full Day (8-9 Hours)',
+    startingPrice: '₹3,299',
+    pickupLocation: 'Una Railway Station / Una Hotels',
+    description: 'Most popular sacred combined pilgrimage from Una. Complete sacred darshan of Mata Chintpurni Devi and Mata Jwala Ji in a single comfortable day.',
+    highlights: [
+      'Cover two prime Shaktipeeths in one well-planned trip',
+      'Covers Maa Chintpurni in morning, Maa Jwalaji in afternoon',
+      'Spacious AC car with ample luggage space for families',
+      'No stress of catching local buses or hiring multiple cabs',
+    ],
+    itinerary: [
+      '07:30 AM: Pickup from Una railway station or hotel.',
+      '08:45 AM: Arrive Chintpurni Dham, VIP darshan and breakfast.',
+      '11:30 AM: Depart for Jwalaji via scenic Bharwain-Dehra road.',
+      '01:00 PM: Arrive Jwalaji, darshan of holy eternal flames & lunch.',
+      '04:30 PM: Relaxing return drive with drop at Una by 06:30 PM.',
+    ],
+    inclusions: [
+      'Full day dedicated AC cab (Sedan/SUV/Innova)',
+      'Tolls, interstate permits, parking and driver charges',
+      'Multiple rest and tea breaks as per your pace',
+    ],
+    featured: true,
+    order: 10,
+  },
+  {
+    title: 'Himachal 4 Dham / 5 Devi Comprehensive Yatra Package',
+    slug: '4-dham-5-devi-yatra-package',
+    category: 'Pilgrimage Yatra',
+    duration: '2 Days / 1 Night',
+    startingPrice: '₹6,499',
+    pickupLocation: 'Una Railway Station / Una Town',
+    description: 'The ultimate sacred Himachal Devi Darshan circuit covering Mata Naina Devi, Mata Chintpurni, Mata Jwala Ji, Mata Brajeshwari Kangra, and Mata Chamunda Devi.',
+    highlights: [
+      '5 Great Shaktipeeths covered: Naina Devi, Chintpurni, Jwalaji, Kangra & Chamunda',
+      'Complete spiritual peace of mind with guided driver assistance',
+      'Night halt arranged at peaceful Jwalaji or Dharamshala',
+      'Ideal for elderly parents, families, and pilgrimage groups',
+    ],
+    itinerary: [
+      'Day 1: Una pickup -> Mata Naina Devi Ji -> Mata Chintpurni Ji -> Evening aarti at Mata Jwala Ji. Night stay at Jwalaji/Kangra.',
+      'Day 2: Morning darshan at Mata Brajeshwari Devi (Kangra) -> Mata Chamunda Devi -> Return drive to Una for evening train/departure.',
+    ],
+    inclusions: [
+      'Full trip dedicated AC vehicle (Dzire / Innova / Tempo Traveller)',
+      'All toll taxes, state taxes, parking & driver night charges',
+      'Luggage carrier and door-to-door temple assistance',
+    ],
+    featured: true,
+    order: 11,
+  },
+];
+
+export const initialCars = [
+  {
+    name: 'Sedan (Maruti Dzire / Etios)',
+    category: 'Sedan',
+    tag: 'Budget & Business',
+    passengers: 'Up to 4 Passengers',
+    luggage: '2 Large + 2 Small Bags',
+    ideal: 'Local city rides, station transfers, Chandigarh hospital & airport drops',
+    features: [
+      'Fully Air-Conditioned',
+      'Comfortable Legroom',
+      'Clean & Sanitized Daily',
+      'Music System & Mobile Charger',
+    ],
+    startingPrice: '₹11/km',
+    image: '/assets/fleet/sedan_dzire.jpg',
+    order: 1,
+  },
+  {
+    name: 'SUV (Toyota Innova Crysta)',
+    category: 'SUV',
+    tag: 'Family & Hill Tours',
+    passengers: '6 to 7 Passengers',
+    luggage: 'Roof Carrier + Spacious Boot',
+    ideal: 'Dharamshala, Shimla, Manali tours, family trips, heavy luggage',
+    features: [
+      'Powerful Dual AC',
+      'Smooth Hill Suspension',
+      'Ample Luggage Carrier',
+      'Reclining Captain Seats',
+    ],
+    startingPrice: '₹16/km',
+    image: '/assets/fleet/innova_suv.jpg',
+    order: 2,
+  },
+  {
+    name: 'Tempo Traveller (12-17 Seater)',
+    category: 'Tempo Traveller',
+    tag: 'Group & Pilgrimage',
+    passengers: '12 to 17 Passengers',
+    luggage: 'High-Capacity Roof Carrier',
+    ideal: 'Chintpurni, Jwalaji Devi yatra, weddings, school/college groups',
+    features: [
+      'Push-back Reclining Seats',
+      'High Roof Airy Cabin',
+      'Ample Legroom',
+      'Experienced Hill Driver',
+    ],
+    startingPrice: '₹24/km',
+    image: '/assets/fleet/tempo_traveller.jpg',
+    order: 3,
+  },
+];
+
+export async function seedDefaultsIfEmpty() {
+  try {
+    for (const pkg of initialPackages) {
+      await Package.updateOne({ slug: pkg.slug }, { $setOnInsert: pkg }, { upsert: true });
+    }
+    // Clean up any exact duplicate packages with non-unique IDs if any were inserted
+    const all = await Package.find().sort({ createdAt: 1 });
+    const seenSlugs = new Set();
+    for (const item of all) {
+      if (seenSlugs.has(item.slug)) {
+        await Package.findByIdAndDelete(item._id);
+      } else {
+        seenSlugs.add(item.slug);
+      }
+    }
+
+    for (const car of initialCars) {
+      await Car.updateOne({ name: car.name }, { $setOnInsert: car }, { upsert: true });
+    }
+    const allCars = await Car.find().sort({ createdAt: 1 });
+    const seenCars = new Set();
+    for (const item of allCars) {
+      if (seenCars.has(item.name)) {
+        await Car.findByIdAndDelete(item._id);
+      } else {
+        seenCars.add(item.name);
+      }
+    }
+    console.log('Package & Car collections verified and synchronized.');
+  } catch (err) {
+    console.error('Error seeding initial data:', err.message);
+  }
+}

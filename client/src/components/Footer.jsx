@@ -4,18 +4,18 @@ import { BUSINESS } from '../data/business.js';
 
 const quick = [
   ['Home', '/'],
+  ['Tour Packages', '/packages'],
   ['Taxi in Una', '/taxi-service-in-una'],
   ['Amb & Andaura Cab', '/taxi-service-amb-andaura'],
   ['Gagret Taxi', '/taxi-service-in-gagret'],
   ['Haroli & Tahliwal', '/taxi-service-in-haroli'],
-  ['Mehatpur Taxi', '/taxi-service-mehatpur'],
   ['About Us', '/about'],
   ['Contact', '/contact'],
 ];
 
 const svc = [
+  ['Tour Packages', '/packages'],
   ['Local City Taxi', '/taxi-service-in-una'],
-  ['Outstation Taxi', '/outstation-taxi-una'],
   ['Airport Transfers', '/airport-taxi-una'],
   ['Una Railway Station Taxi', '/railway-station-taxi-una'],
   ['Chintpurni Devi Taxi', '/una-to-chintpurni-taxi'],

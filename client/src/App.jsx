@@ -7,6 +7,7 @@ import { seoPages } from './data/seoPages.js';
 const SeoPage = lazy(() => import('./pages/SeoPage.jsx'));
 const Contact = lazy(() => import('./pages/Contact.jsx'));
 const About = lazy(() => import('./pages/About.jsx'));
+const Packages = lazy(() => import('./pages/Packages.jsx'));
 const Legal = lazy(() => import('./pages/Legal.jsx'));
 const NotFound = lazy(() => import('./pages/NotFound.jsx'));
 const Admin = lazy(() => import('./pages/Admin.jsx'));
@@ -18,6 +19,7 @@ export default function App() {
         <Route element={<MainLayout />}>
           <Route index element={<Home />} />
           {seoPages.map((p) => <Route key={p.slug} path={p.slug} element={<SeoPage slug={p.slug} />} />)}
+          <Route path="packages" element={<Packages />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
           <Route path="privacy-policy" element={<Legal kind="privacy" />} />

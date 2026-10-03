@@ -6,8 +6,8 @@ import { telHref } from '../utils/contact.js';
 
 const links = [
   ['Home', '/'],
+  ['Packages', '/packages'],
   ['Taxi Services', '/taxi-service-in-una'],
-  ['Outstation', '/outstation-taxi-una'],
   ['Airport Transfer', '/airport-taxi-una'],
   ['Popular Routes', '/#routes'],
   ['About Us', '/about'],
