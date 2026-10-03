@@ -309,7 +309,7 @@ export const initialCars = [
       'Music System & Mobile Charger',
     ],
     startingPrice: '₹11/km',
-    image: '/assets/fleet/sedan_dzire.jpg',
+    image: '/cars/sedan_dzire.jpg',
     order: 1,
   },
   {
@@ -326,7 +326,7 @@ export const initialCars = [
       'Reclining Captain Seats',
     ],
     startingPrice: '₹16/km',
-    image: '/assets/fleet/innova_suv.jpg',
+    image: '/cars/innova_suv.jpg',
     order: 2,
   },
   {
@@ -343,7 +343,7 @@ export const initialCars = [
       'Experienced Hill Driver',
     ],
     startingPrice: '₹24/km',
-    image: '/assets/fleet/tempo_traveller.jpg',
+    image: '/cars/tempo_traveller.jpg',
     order: 3,
   },
 ];
@@ -365,7 +365,15 @@ export async function seedDefaultsIfEmpty() {
     }
 
     for (const car of initialCars) {
-      await Car.updateOne({ name: car.name }, { $setOnInsert: car }, { upsert: true });
+      const existing = await Car.findOne({ name: car.name });
+      if (existing) {
+        if (!existing.image || existing.image.startsWith('/assets/fleet')) {
+          existing.image = car.image;
+          await existing.save();
+        }
+      } else {
+        await Car.create(car);
+      }
     }
     const allCars = await Car.find().sort({ createdAt: 1 });
     const seenCars = new Set();

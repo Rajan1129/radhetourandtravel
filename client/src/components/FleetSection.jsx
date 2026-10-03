@@ -8,6 +8,7 @@ const defaultCabs = [
   {
     name: 'Sedan (Dzire / Etios)',
     tag: 'Budget & Business',
+    image: '/cars/sedan_dzire.jpg',
     photo: 'fleet/sedan_dzire',
     passengers: 'Up to 4 Passengers',
     luggage: '2 Large + 2 Small Bags',
@@ -17,6 +18,7 @@ const defaultCabs = [
   {
     name: 'SUV (Toyota Innova Crysta)',
     tag: 'Family & Hill Tours',
+    image: '/cars/innova_suv.jpg',
     photo: 'fleet/innova_suv',
     passengers: '6 to 7 Passengers',
     luggage: 'Roof Carrier + Spacious Boot',
@@ -24,8 +26,9 @@ const defaultCabs = [
     features: ['Powerful Dual AC', 'Smooth Hill Suspension', 'Ample Luggage Carrier', 'Reclining Captain Seats'],
   },
   {
-    name: 'Tempo Traveller',
+    name: 'Tempo Traveller (12-17 Seater)',
     tag: 'Group & Pilgrimage',
+    image: '/cars/tempo_traveller.jpg',
     photo: 'fleet/tempo_traveller',
     passengers: '12 to 17 Passengers',
     luggage: 'High-Capacity Roof Carrier',
@@ -84,7 +87,9 @@ export default function FleetSection() {
                       className="h-60 w-full object-cover"
                       onError={(e) => {
                         e.target.onerror = null;
-                        e.target.src = '/og-image.jpg';
+                        const isSedan = /sedan|dzire|etios/i.test(c.name);
+                        const isSuv = /suv|innova/i.test(c.name);
+                        e.target.src = isSedan ? '/cars/sedan_dzire.jpg' : isSuv ? '/cars/innova_suv.jpg' : '/cars/tempo_traveller.jpg';
                       }}
                     />
                   ) : (

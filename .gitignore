@@ -20,6 +20,10 @@ npm-debug.log*
 # Uploads
 server/uploads/*
 !server/uploads/.gitkeep
+!server/uploads/packages/
 !server/uploads/packages/.gitkeep
+!server/uploads/packages/*.jpg
+!server/uploads/cars/
 !server/uploads/cars/.gitkeep
+!server/uploads/cars/*.jpg
 

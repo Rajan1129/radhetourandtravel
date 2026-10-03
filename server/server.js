@@ -26,6 +26,8 @@ app.use(express.json({ limit: '20kb' }));
 
 // Static uploads for dynamic images
 app.use('/uploads', express.static(uploadsDir, { maxAge: '7d' }));
+app.use('/cars', express.static(path.join(uploadsDir, 'cars'), { maxAge: '7d' }));
+app.use('/packages', express.static(path.join(uploadsDir, 'packages'), { maxAge: '7d' }));
 
 app.get('/api/health', (req, res) => res.json({ ok: true }));
 app.use('/api', enquiryRoutes);

@@ -636,7 +636,17 @@ export default function Admin() {
                     <div>
                       <div className="h-44 bg-slate-100 relative">
                         {car.image ? (
-                          <img src={car.image} alt={car.name} className="w-full h-full object-cover" />
+                          <img
+                            src={car.image}
+                            alt={car.name}
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              e.target.onerror = null;
+                              const isSedan = /sedan|dzire|etios/i.test(car.name);
+                              const isSuv = /suv|innova/i.test(car.name);
+                              e.target.src = isSedan ? '/cars/sedan_dzire.jpg' : isSuv ? '/cars/innova_suv.jpg' : '/cars/tempo_traveller.jpg';
+                            }}
+                          />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center text-slate-400 text-xs">
                             No custom image
