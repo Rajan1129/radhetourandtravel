@@ -83,75 +83,93 @@ export default function BookingForm() {
   }
 
   if (status === 'success') return (
-    <div role="status" className="border border-sky/30 bg-slate-50 p-5 md:p-7 rounded-lg">
-      <div className="flex items-start gap-3.5">
-        <CheckCircle2 className="text-emerald-600 shrink-0 mt-0.5" size={28} aria-hidden="true" />
-        <div>
-          <h3 className="text-xl md:text-2xl font-bold text-navy">Your enquiry has been received!</h3>
-          <p className="mt-1 text-slate-600 text-sm">
-            We will contact you shortly on <b>{f.phone}</b> with availability and the best fare.
-          </p>
-          <div className="mt-4 flex flex-wrap gap-2.5">
-            <a href={waFromEnquiry(f)} target="_blank" rel="noopener noreferrer" className="btn btn-wa !py-2 text-xs">
-              Continue on WhatsApp (Faster Reply)
-            </a>
-            <a href="#packages" className="btn btn-primary !py-2 text-xs">
-              View Packages Below &darr;
-            </a>
-            <button className="btn btn-outline-dark !py-2 text-xs" onClick={() => { setF(empty); setStatus('idle'); }}>
-              New enquiry
-            </button>
+    <div role="status" className="space-y-6">
+      <div className="p-5 md:p-6 rounded-2xl bg-emerald-50/90 border border-emerald-200 shadow-sm">
+        <div className="flex items-start gap-4">
+          <div className="w-11 h-11 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-700 shrink-0 shadow-sm">
+            <CheckCircle2 size={26} aria-hidden="true" />
+          </div>
+          <div className="flex-1">
+            <h3 className="text-xl md:text-2xl font-extrabold text-navy">
+              Booking Enquiry Received!
+            </h3>
+            <p className="mt-1.5 text-slate-700 text-sm md:text-base leading-relaxed">
+              Thank you, <b className="text-navy">{f.name || 'valued customer'}</b>! We received your journey details from <b>{f.pickup}</b> to <b>{f.destination}</b> on <b>{f.travelDate}</b>. Our team will contact you on <b className="text-navy">{f.phone}</b> shortly with our best quote.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2.5">
+              <a href={waFromEnquiry(f)} target="_blank" rel="noopener noreferrer" className="btn btn-wa !py-2.5 !px-4 text-xs font-bold rounded-xl shadow-sm">
+                Confirm on WhatsApp (Faster Reply)
+              </a>
+              <a href="#packages" className="btn btn-primary !py-2.5 !px-4 text-xs font-bold rounded-xl">
+                Explore Packages Below &darr;
+              </a>
+              <button className="btn btn-outline-dark !py-2.5 !px-4 text-xs font-bold rounded-xl" onClick={() => { setF(empty); setStatus('idle'); }}>
+                New Enquiry
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Tour Packages Cards Showcase */}
-      <div className="mt-6 pt-5 border-t border-slate-200">
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-1.5 text-navy font-bold text-sm">
-            <span className="text-xs font-bold uppercase tracking-wider text-sky-dark bg-sky/10 px-2.5 py-0.5 rounded">
-              Popular Himachal Tours
+      {/* Featured Tour Packages after submission */}
+      <div>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+          <div>
+            <span className="text-[11px] font-extrabold uppercase tracking-wider text-sky-dark bg-sky/10 px-2.5 py-0.5 rounded-full">
+              Recommended Himachal Tours
             </span>
-            <span className="hidden sm:inline text-xs text-slate-500">• Top packages from Una</span>
+            <h4 className="text-lg md:text-xl font-extrabold text-navy mt-1">
+              Popular Holiday &amp; Yatra Packages from Una
+            </h4>
           </div>
-          <a href="/packages" className="text-xs font-bold text-sky-dark hover:underline">
-            View All 11+ Packages &rarr;
+          <a href="/packages" className="text-xs font-bold text-sky-dark hover:text-navy hover:underline shrink-0 flex items-center gap-1">
+            <span>View All 11+ Packages</span>
+            <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {/* 2-column grid so photos are large, clear, and attractive */}
+        <div className="grid gap-4 sm:grid-cols-2">
           {featuredToursAfterSubmit.map((tour) => (
-            <div key={tour.title} className="border border-slate-200 rounded-lg overflow-hidden bg-white shadow-sm flex flex-col justify-between hover:shadow-md transition group">
+            <div
+              key={tour.title}
+              className="border border-slate-200/90 rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
+            >
               <div>
-                <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+                <div className="relative aspect-[16/9] overflow-hidden bg-slate-100">
                   <img
                     src={tour.image}
                     alt={tour.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
                       e.target.onerror = null;
                       e.target.src = '/packages/shimla.jpg';
                     }}
                   />
-                  <span className="absolute bottom-1.5 right-1.5 bg-navy/90 text-white font-extrabold text-[10px] px-2 py-0.5 rounded shadow">
-                    {tour.price}
-                  </span>
-                  <span className="absolute top-1.5 left-1.5 bg-sun text-navy font-black text-[9px] px-1.5 py-0.5 rounded shadow uppercase">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
+                  <span className="absolute top-2.5 left-2.5 bg-sun text-navy font-black text-[10px] px-2 py-0.5 rounded-md shadow uppercase tracking-wider">
                     {tour.tag}
                   </span>
+                  <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-end justify-between text-white">
+                    <span className="text-xs font-bold drop-shadow">{tour.duration}</span>
+                    <span className="bg-white/95 text-navy font-black text-xs px-2.5 py-0.5 rounded-md shadow">
+                      {tour.price}
+                    </span>
+                  </div>
                 </div>
-                <div className="p-2.5">
-                  <h4 className="font-bold text-navy text-xs line-clamp-1">{tour.title}</h4>
-                  <p className="text-[10px] text-slate-500 mt-0.5">{tour.duration}</p>
-                  <p className="text-[11px] text-slate-600 mt-1 line-clamp-1">{tour.desc}</p>
+                <div className="p-3.5">
+                  <h5 className="font-bold text-navy text-sm line-clamp-1 group-hover:text-sky-dark transition-colors">
+                    {tour.title}
+                  </h5>
+                  <p className="text-xs text-slate-500 mt-1 line-clamp-1">{tour.desc}</p>
                 </div>
               </div>
-              <div className="p-2.5 pt-0">
+              <div className="p-3.5 pt-0">
                 <a
                   href={`https://wa.me/916230468560?text=${encodeURIComponent(tour.waText)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-center w-full py-1.5 rounded bg-emerald-600 text-white font-bold text-[11px] hover:bg-emerald-700 transition"
+                  className="btn btn-wa w-full !py-2 text-xs font-bold rounded-xl justify-center shadow-sm"
                 >
                   Book on WhatsApp
                 </a>

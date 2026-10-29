@@ -76,15 +76,15 @@ export default function FleetSection() {
           {cabs.map((c) => (
             <div
               key={c._id || c.name}
-              className="border border-slate-200 bg-white overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between"
+              className="border border-slate-200/90 bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
-                <div className="relative">
+                <div className="relative overflow-hidden aspect-[16/10] bg-slate-100">
                   {c.image ? (
                     <img
                       src={c.image}
                       alt={c.name}
-                      className="h-60 w-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       onError={(e) => {
                         e.target.onerror = null;
                         const isSedan = /sedan|dzire|etios/i.test(c.name);
@@ -96,30 +96,30 @@ export default function FleetSection() {
                     <Photo
                       name={c.photo || 'fleet/sedan_dzire'}
                       alt={c.name}
-                      className="h-60 w-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       width="600"
                       height="450"
                     />
                   )}
                   {c.tag && (
-                    <span className="absolute top-3 right-3 bg-navy/90 text-sun text-xs font-extrabold px-2.5 py-1 rounded">
+                    <span className="absolute top-3 right-3 bg-navy/90 text-sun text-xs font-extrabold px-3 py-1 rounded-lg shadow uppercase tracking-wider backdrop-blur-sm">
                       {c.tag}
                     </span>
                   )}
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-navy">{c.name}</h3>
+                  <h3 className="text-xl font-extrabold text-navy group-hover:text-sky-dark transition-colors">{c.name}</h3>
                   <p className="mt-2 text-xs font-semibold text-sky-dark">
                     {c.passengers} · {c.luggage}
                   </p>
-                  <p className="mt-2 text-sm text-slate-dark leading-relaxed">
+                  <p className="mt-2.5 text-sm text-slate-dark leading-relaxed">
                     <b>Best for:</b> {c.ideal}
                   </p>
 
                   {c.features && c.features.length > 0 && (
                     <div className="mt-5 border-t border-slate-100 pt-4">
-                      <p className="text-xs font-bold uppercase tracking-wider text-slate-dark mb-2">Key Features:</p>
+                      <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Key Features:</p>
                       <ul className="space-y-1.5 text-xs text-slate-dark">
                         {c.features.map((feat) => (
                           <li key={feat} className="flex items-center gap-2">
@@ -133,11 +133,11 @@ export default function FleetSection() {
                 </div>
               </div>
 
-              <div className="p-6 pt-0 flex gap-2">
-                <a href="#book" className="btn btn-outline-dark flex-1 justify-center !py-2 text-xs">
+              <div className="p-6 pt-0 flex gap-2.5">
+                <a href="#book" className="btn btn-outline-dark flex-1 justify-center !py-2.5 text-xs font-bold rounded-xl shadow-sm">
                   Get Quote <ArrowUpRight size={14} />
                 </a>
-                <a href={telHref} className="btn btn-primary !py-2 !px-3 text-xs" title="Call directly">
+                <a href={telHref} className="btn btn-primary !py-2.5 !px-3.5 text-xs rounded-xl shadow-sm" title="Call directly">
                   <Phone size={14} />
                 </a>
               </div>

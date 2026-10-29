@@ -45,10 +45,10 @@ export default function PackagesSection() {
   }).slice(0, 6);
 
   return (
-    <section id="packages" aria-labelledby="packages-h" className="py-16 md:py-24 bg-slate-50 scroll-mt-20">
+    <section id="packages" aria-labelledby="packages-h" className="py-16 md:py-24 bg-white scroll-mt-20 border-b border-slate-100">
       <div className="wrap">
         {/* Header Block */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 border-b border-slate-200 pb-8">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 border-b border-slate-200/80 pb-8">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky/10 text-sky-dark text-xs font-bold uppercase tracking-wider mb-3">
               <Sparkles size={14} className="text-sky" />
@@ -63,7 +63,7 @@ export default function PackagesSection() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-            <Link to="/packages" className="btn btn-primary inline-flex items-center gap-2 !py-2.5">
+            <Link to="/packages" className="btn btn-primary inline-flex items-center gap-2 !py-2.5 rounded-xl shadow-md shadow-sky/20">
               <span>View All 11+ Packages</span>
               <ArrowRight size={16} />
             </Link>
@@ -71,36 +71,39 @@ export default function PackagesSection() {
         </div>
 
         {/* Tab Filters */}
-        <div className="mt-8 flex flex-wrap items-center gap-2">
+        <div className="mt-8 flex flex-wrap items-center gap-2.5">
           <button
             onClick={() => setActiveTab('all')}
-            className={`px-5 py-2 rounded-full text-xs font-bold transition-all ${
+            className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
               activeTab === 'all'
-                ? 'bg-navy text-white shadow-sm'
-                : 'bg-white text-slate-700 border border-slate-200 hover:border-navy/40 hover:bg-slate-50'
+                ? 'bg-navy text-white shadow-md'
+                : 'bg-slate-50 text-slate-700 border border-slate-200/80 hover:border-navy/30 hover:bg-slate-100'
             }`}
           >
-            All Featured Packages
+            <Compass size={14} className={activeTab === 'all' ? 'text-sun' : 'text-slate-400'} />
+            <span>All Featured Packages</span>
           </button>
           <button
             onClick={() => setActiveTab('hills')}
-            className={`px-5 py-2 rounded-full text-xs font-bold transition-all ${
+            className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
               activeTab === 'hills'
-                ? 'bg-navy text-white shadow-sm'
-                : 'bg-white text-slate-700 border border-slate-200 hover:border-navy/40 hover:bg-slate-50'
+                ? 'bg-navy text-white shadow-md'
+                : 'bg-slate-50 text-slate-700 border border-slate-200/80 hover:border-navy/30 hover:bg-slate-100'
             }`}
           >
-            Hill Stations (Shimla, Manali, Kasol, Dharamshala)
+            <Sparkles size={14} className={activeTab === 'hills' ? 'text-sun' : 'text-slate-400'} />
+            <span>Hill Stations (Shimla, Manali, Kasol, Dharamshala)</span>
           </button>
           <button
             onClick={() => setActiveTab('yatra')}
-            className={`px-5 py-2 rounded-full text-xs font-bold transition-all ${
+            className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
               activeTab === 'yatra'
-                ? 'bg-navy text-white shadow-sm'
-                : 'bg-white text-slate-700 border border-slate-200 hover:border-navy/40 hover:bg-slate-50'
+                ? 'bg-navy text-white shadow-md'
+                : 'bg-slate-50 text-slate-700 border border-slate-200/80 hover:border-navy/30 hover:bg-slate-100'
             }`}
           >
-            Sacred Pilgrimages (Chintpurni, Jwalaji, 2 &amp; 4 Dham)
+            <MapPin size={14} className={activeTab === 'yatra' ? 'text-sun' : 'text-slate-400'} />
+            <span>Sacred Pilgrimages (Chintpurni, Jwalaji, 2 &amp; 4 Dham)</span>
           </button>
         </div>
 
