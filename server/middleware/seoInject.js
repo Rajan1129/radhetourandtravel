@@ -157,6 +157,28 @@ function renderSemanticHtml(p, meta, pg, site) {
 
       <section style="padding:3rem 1rem;background:#f8fafc;">
         <div style="max-width:1140px;margin:0 auto;">
+          <h2 style="font-size:1.8rem;margin-bottom:0.5rem;color:#082B49;">Popular Himachal Tour Packages from Una</h2>
+          <p style="color:#475569;margin-bottom:1.5rem;">Customized private cab packages for Shimla Ridge &amp; Christ Church, Manali Solang snow points, Kasol, and sacred Devi Darshans.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:1.5rem;">
+            <div style="background:#fff;border:1px solid #e2e8f0;padding:1.5rem;border-radius:6px;">
+              <h3 style="font-size:1.25rem;"><a href="/packages" style="color:#082B49;text-decoration:none;">Shimla Hill Station Package</a></h3>
+              <p style="color:#475569;margin-top:0.5rem;">2 Days / 1 Night. Visit Mall Road, Ridge, Christ Church, Kufri &amp; Jakhoo Temple with expert mountain drivers.</p>
+            </div>
+            <div style="background:#fff;border:1px solid #e2e8f0;padding:1.5rem;border-radius:6px;">
+              <h3 style="font-size:1.25rem;"><a href="/packages" style="color:#082B49;text-decoration:none;">Manali &amp; Solang Valley Holiday</a></h3>
+              <p style="color:#475569;margin-top:0.5rem;">3 Days / 2 Nights. Solang Valley adventure sports, Hadimba wooden temple, Atal Tunnel &amp; Vashisht Kund.</p>
+            </div>
+            <div style="background:#fff;border:1px solid #e2e8f0;padding:1.5rem;border-radius:6px;">
+              <h3 style="font-size:1.25rem;"><a href="/packages" style="color:#082B49;text-decoration:none;">Himachal 2 Dham &amp; 4 Dham Devi Yatra</a></h3>
+              <p style="color:#475569;margin-top:0.5rem;">Sacred Shaktipeeth darshans covering Mata Chintpurni, Mata Jwala Ji, Kangra &amp; Naina Devi from Una.</p>
+            </div>
+          </div>
+          <div style="margin-top:1.5rem;"><a href="/packages" style="color:#0284c7;font-weight:bold;text-decoration:underline;">View All 11+ Tour Packages &rarr;</a></div>
+        </div>
+      </section>
+
+      <section style="padding:3rem 1rem;background:#f8fafc;">
+        <div style="max-width:1140px;margin:0 auto;">
           <h2 style="font-size:1.8rem;margin-bottom:1.5rem;">Popular Taxi Routes from Una</h2>
           <ul style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:1rem;list-style:none;padding:0;">
             ${seoPages.filter((s) => s.type === 'route').map((r) => `
