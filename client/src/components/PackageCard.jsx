@@ -26,11 +26,6 @@ export default function PackageCard({ pkg }) {
           <span className="absolute top-3 left-3 bg-navy/90 text-sun text-xs font-extrabold px-3 py-1 rounded-lg shadow uppercase tracking-wider backdrop-blur-sm">
             {pkg.category}
           </span>
-          {pkg.startingPrice && (
-            <span className="absolute bottom-3 right-3 bg-white/95 text-navy font-black text-sm px-3 py-1 rounded-lg shadow">
-              {pkg.startingPrice}
-            </span>
-          )}
         </div>
 
         <div className="p-6">

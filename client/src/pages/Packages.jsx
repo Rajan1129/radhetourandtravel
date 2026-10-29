@@ -112,7 +112,7 @@ export default function Packages() {
               <span>{selectedCat}</span>
             </h2>
             <p className="text-xs text-slate-500 mt-1">
-              Showing {filtered.length} curated {filtered.length === 1 ? 'package' : 'packages'} with transparent fares
+              Showing {filtered.length} curated {filtered.length === 1 ? 'package' : 'packages'} with personalized quotes & local drivers
             </p>
           </div>
         </div>

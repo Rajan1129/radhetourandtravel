@@ -29,7 +29,6 @@ function Field({ id, label, error, children }) {
 const featuredToursAfterSubmit = [
   {
     title: 'Shimla Ridge & Hill Station Tour',
-    price: '₹4,999',
     duration: '2 Days / 1 Night',
     image: '/packages/shimla.jpg',
     tag: 'Ridge & Kufri',
@@ -38,7 +37,6 @@ const featuredToursAfterSubmit = [
   },
   {
     title: 'Manali & Solang Valley Holiday',
-    price: '₹7,999',
     duration: '3 Days / 2 Nights',
     image: '/packages/manali.jpg',
     tag: 'Snow Peaks',
@@ -47,7 +45,6 @@ const featuredToursAfterSubmit = [
   },
   {
     title: 'Kasol & Manikaran Parvati Valley',
-    price: '₹5,999',
     duration: '2 Days / 1 Night',
     image: '/packages/kasol.jpg',
     tag: 'Riverside',
@@ -56,7 +53,6 @@ const featuredToursAfterSubmit = [
   },
   {
     title: 'Himachal 2 Dham Yatra (Chintpurni + Jwalaji)',
-    price: '₹3,299',
     duration: '1 Full Day',
     image: '/packages/2_dham.jpg',
     tag: 'Sacred Yatra',
@@ -150,11 +146,8 @@ export default function BookingForm() {
                   <span className="absolute top-2.5 left-2.5 bg-sun text-navy font-black text-[10px] px-2 py-0.5 rounded-md shadow uppercase tracking-wider">
                     {tour.tag}
                   </span>
-                  <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-end justify-between text-white">
+                  <div className="absolute bottom-2.5 left-2.5 text-white">
                     <span className="text-xs font-bold drop-shadow">{tour.duration}</span>
-                    <span className="bg-white/95 text-navy font-black text-xs px-2.5 py-0.5 rounded-md shadow">
-                      {tour.price}
-                    </span>
                   </div>
                 </div>
                 <div className="p-3.5">
