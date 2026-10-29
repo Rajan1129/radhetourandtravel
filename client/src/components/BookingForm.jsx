@@ -26,6 +26,45 @@ function Field({ id, label, error, children }) {
     </div>
   );
 }
+const featuredToursAfterSubmit = [
+  {
+    title: 'Shimla Ridge & Hill Station Tour',
+    price: '₹4,999',
+    duration: '2 Days / 1 Night',
+    image: '/packages/shimla.jpg',
+    tag: 'Ridge & Kufri',
+    desc: 'Mall Road, Christ Church, Kufri snow viewpoint',
+    waText: 'Hello Radhe Una Taxi, I submitted an enquiry and also want to book the Shimla Tour Package.',
+  },
+  {
+    title: 'Manali & Solang Valley Holiday',
+    price: '₹7,999',
+    duration: '3 Days / 2 Nights',
+    image: '/packages/manali.jpg',
+    tag: 'Snow Peaks',
+    desc: 'Solang Valley adventure, Hadimba temple & Atal Tunnel',
+    waText: 'Hello Radhe Una Taxi, I submitted an enquiry and also want to book the Manali Holiday Package.',
+  },
+  {
+    title: 'Kasol & Manikaran Parvati Valley',
+    price: '₹5,999',
+    duration: '2 Days / 1 Night',
+    image: '/packages/kasol.jpg',
+    tag: 'Riverside',
+    desc: 'Parvati river cafes, Gurudwara hot springs',
+    waText: 'Hello Radhe Una Taxi, I submitted an enquiry and also want to book the Kasol Tour Package.',
+  },
+  {
+    title: 'Himachal 2 Dham Yatra (Chintpurni + Jwalaji)',
+    price: '₹3,299',
+    duration: '1 Full Day',
+    image: '/packages/2_dham.jpg',
+    tag: 'Sacred Yatra',
+    desc: 'VIP darshan of Maa Chintpurni & Maa Jwalaji',
+    waText: 'Hello Radhe Una Taxi, I submitted an enquiry and also want to book the 2 Dham Yatra Package.',
+  },
+];
+
 export default function BookingForm() {
   const [f, setF] = useState(empty);
   const [errors, setErrors] = useState({});
@@ -44,13 +83,82 @@ export default function BookingForm() {
   }
 
   if (status === 'success') return (
-    <div role="status" className="border border-sky/40 bg-mist p-6 md:p-8">
-      <CheckCircle2 className="text-sky-dark" size={32} aria-hidden="true" />
-      <h3 className="mt-3 text-2xl">Your enquiry has been received.</h3>
-      <p className="mt-1 text-slate-dark">We'll contact you shortly on {f.phone}. For a faster reply, send the same details on WhatsApp.</p>
-      <div className="mt-5 flex flex-wrap gap-3">
-        <a href={waFromEnquiry(f)} target="_blank" rel="noopener noreferrer" className="btn btn-wa">Continue on WhatsApp</a>
-        <button className="btn btn-outline-dark" onClick={() => { setF(empty); setStatus('idle'); }}>New enquiry</button>
+    <div role="status" className="border border-sky/30 bg-slate-50 p-5 md:p-7 rounded-lg">
+      <div className="flex items-start gap-3.5">
+        <CheckCircle2 className="text-emerald-600 shrink-0 mt-0.5" size={28} aria-hidden="true" />
+        <div>
+          <h3 className="text-xl md:text-2xl font-bold text-navy">Your enquiry has been received!</h3>
+          <p className="mt-1 text-slate-600 text-sm">
+            We will contact you shortly on <b>{f.phone}</b> with availability and the best fare.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2.5">
+            <a href={waFromEnquiry(f)} target="_blank" rel="noopener noreferrer" className="btn btn-wa !py-2 text-xs">
+              Continue on WhatsApp (Faster Reply)
+            </a>
+            <a href="#packages" className="btn btn-primary !py-2 text-xs">
+              View Packages Below &darr;
+            </a>
+            <button className="btn btn-outline-dark !py-2 text-xs" onClick={() => { setF(empty); setStatus('idle'); }}>
+              New enquiry
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Tour Packages Cards Showcase */}
+      <div className="mt-6 pt-5 border-t border-slate-200">
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-1.5 text-navy font-bold text-sm">
+            <span className="text-xs font-bold uppercase tracking-wider text-sky-dark bg-sky/10 px-2.5 py-0.5 rounded">
+              Popular Himachal Tours
+            </span>
+            <span className="hidden sm:inline text-xs text-slate-500">• Top packages from Una</span>
+          </div>
+          <a href="/packages" className="text-xs font-bold text-sky-dark hover:underline">
+            View All 11+ Packages &rarr;
+          </a>
+        </div>
+
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {featuredToursAfterSubmit.map((tour) => (
+            <div key={tour.title} className="border border-slate-200 rounded-lg overflow-hidden bg-white shadow-sm flex flex-col justify-between hover:shadow-md transition group">
+              <div>
+                <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+                  <img
+                    src={tour.image}
+                    alt={tour.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = '/packages/shimla.jpg';
+                    }}
+                  />
+                  <span className="absolute bottom-1.5 right-1.5 bg-navy/90 text-white font-extrabold text-[10px] px-2 py-0.5 rounded shadow">
+                    {tour.price}
+                  </span>
+                  <span className="absolute top-1.5 left-1.5 bg-sun text-navy font-black text-[9px] px-1.5 py-0.5 rounded shadow uppercase">
+                    {tour.tag}
+                  </span>
+                </div>
+                <div className="p-2.5">
+                  <h4 className="font-bold text-navy text-xs line-clamp-1">{tour.title}</h4>
+                  <p className="text-[10px] text-slate-500 mt-0.5">{tour.duration}</p>
+                  <p className="text-[11px] text-slate-600 mt-1 line-clamp-1">{tour.desc}</p>
+                </div>
+              </div>
+              <div className="p-2.5 pt-0">
+                <a
+                  href={`https://wa.me/916230468560?text=${encodeURIComponent(tour.waText)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-center w-full py-1.5 rounded bg-emerald-600 text-white font-bold text-[11px] hover:bg-emerald-700 transition"
+                >
+                  Book on WhatsApp
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -24,8 +24,8 @@ export default function Home() {
       <SEOHead {...homeMeta} path="/" schemas={[localBusinessSchema(CONFIG.siteUrl), webSiteSchema(CONFIG.siteUrl), faqSchema(faqs)]} />
       <Hero />
       <QuickBooking />
-      <ServiceSection />
       <PackagesSection />
+      <ServiceSection />
       <FleetSection />
       <RouteSection />
       <WhyChooseUs />
