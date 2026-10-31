@@ -7,6 +7,7 @@ import Hero from '../components/Hero.jsx';
 import QuickBooking from '../components/QuickBooking.jsx';
 import ServiceSection from '../components/ServiceSection.jsx';
 import PackagesSection from '../components/PackagesSection.jsx';
+import RailwayStationsSection from '../components/RailwayStationsSection.jsx';
 import FleetSection from '../components/FleetSection.jsx';
 import RouteSection from '../components/RouteSection.jsx';
 import WhyChooseUs from '../components/WhyChooseUs.jsx';
@@ -25,6 +26,7 @@ export default function Home() {
       <Hero />
       <QuickBooking />
       <PackagesSection />
+      <RailwayStationsSection />
       <ServiceSection />
       <FleetSection />
       <RouteSection />

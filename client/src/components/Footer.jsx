@@ -18,6 +18,7 @@ const svc = [
   ['Local City Taxi', '/taxi-service-in-una'],
   ['Airport Transfers', '/airport-taxi-una'],
   ['Una Railway Station Taxi', '/railway-station-taxi-una'],
+  ['Amb Andaura Railway Station Taxi', '/taxi-service-amb-andaura'],
   ['Chintpurni Devi Taxi', '/una-to-chintpurni-taxi'],
   ['Jwalaji Temple Taxi', '/una-to-jwalaji-taxi'],
 ];
